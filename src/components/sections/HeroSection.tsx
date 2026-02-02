@@ -1,7 +1,7 @@
 import { ChevronDown, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useParallax } from '@/hooks/useScrollAnimation';
-import event1 from '@/assets/event-1.png';
+import event1 from '@/assets/about-hero.jpg';
 import event2 from '@/assets/event-2.png';
 import event3 from '@/assets/event-3.png';
 import event4 from '@/assets/event-4.png';
