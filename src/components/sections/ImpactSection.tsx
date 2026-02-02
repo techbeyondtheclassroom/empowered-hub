@@ -2,7 +2,7 @@ import { useScrollAnimation, useCountUp } from '@/hooks/useScrollAnimation';
 import { Users, Handshake, Building, Award } from 'lucide-react';
 import event4 from '@/assets/event-4.png';
 import event8 from '@/assets/event-8.png';
-import event9 from '@/assets/event-9.png';
+import event3 from '@/assets/event-3.png';
 
 const ImpactSection = () => {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.2 });
@@ -58,7 +58,7 @@ const ImpactSection = () => {
                 </div>
                 <div className="rounded-2xl overflow-hidden shadow-xl">
                   <img 
-                    src={event9} 
+                    src={event3} 
                     alt="Impact Event 3" 
                     className="w-full h-auto object-cover aspect-square"
                   />

@@ -5,7 +5,7 @@ import {
   Building, Handshake, DollarSign, GraduationCap, 
   Mail, Linkedin, Instagram, Twitter
 } from 'lucide-react';
-import event1 from '@/assets/event-1.png';
+import event3 from '@/assets/event-3.png';
 
 const CollaborateSection = () => {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.2 });
@@ -53,7 +53,7 @@ const CollaborateSection = () => {
           >
             <div className="rounded-2xl overflow-hidden shadow-2xl bg-google-green/10 p-6">
               <img 
-                src={event1} 
+                src={event3} 
                 alt="Collaborate With Us" 
                 className="w-full h-auto object-cover rounded-xl"
               />
