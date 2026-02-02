@@ -1,5 +1,6 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { Hammer, ArrowRight, Link, Star } from 'lucide-react';
+import { Hammer, Link, Star, ArrowRight } from 'lucide-react';
+import event7 from '@/assets/event-7.png';
 
 const ModelSection = () => {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.2 });
@@ -9,45 +10,36 @@ const ModelSection = () => {
       letter: 'B',
       title: 'Build',
       icon: Hammer,
-      description: 'Knowledge, skills, and confidence through hands-on learning experiences and practical workshops.',
-      gradient: 'from-primary to-purple-mid',
+      description: 'Knowledge, skills, and confidence through hands-on learning.',
+      color: 'bg-google-blue',
+      textColor: 'text-google-blue',
       delay: '0.2s',
     },
     {
       letter: 'B',
       title: 'Bridge',
       icon: Link,
-      description: 'The gap between education and employability by connecting youth with mentors, opportunities, and real-world challenges.',
-      gradient: 'from-purple-mid to-secondary',
+      description: 'The gap between education and employability with mentors.',
+      color: 'bg-google-red',
+      textColor: 'text-google-red',
       delay: '0.4s',
     },
     {
       letter: 'B',
       title: 'Become',
       icon: Star,
-      description: 'Leaders and changemakers who turn learning into lasting impact in their communities and beyond.',
-      gradient: 'from-secondary to-accent',
+      description: 'Leaders and changemakers who create lasting impact.',
+      color: 'bg-google-green',
+      textColor: 'text-google-green',
       delay: '0.6s',
     },
   ];
 
   return (
     <section className="py-20 lg:py-32 bg-muted/30 relative overflow-hidden">
-      {/* Background pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `linear-gradient(45deg, hsl(var(--primary)) 25%, transparent 25%), 
-                           linear-gradient(-45deg, hsl(var(--primary)) 25%, transparent 25%), 
-                           linear-gradient(45deg, transparent 75%, hsl(var(--primary)) 75%), 
-                           linear-gradient(-45deg, transparent 75%, hsl(var(--primary)) 75%)`,
-          backgroundSize: '60px 60px',
-          backgroundPosition: '0 0, 0 30px, 30px -30px, -30px 0px'
-        }} />
-      </div>
-
       <div className="container px-4 relative z-10" ref={ref}>
         {/* Section header */}
-        <div className={`text-center mb-16 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
+        <div className={`text-center mb-12 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
           <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
             Our Approach
           </span>
@@ -59,72 +51,80 @@ const ModelSection = () => {
           </p>
         </div>
 
-        {/* 3B Steps */}
-        <div className="relative max-w-5xl mx-auto">
-          {/* Connecting line (desktop) */}
-          <div className="hidden md:block absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-primary via-secondary to-accent transform -translate-y-1/2 z-0 rounded-full" />
-
-          <div className="grid md:grid-cols-3 gap-8 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* 3B Steps */}
+          <div className="space-y-6">
             {steps.map((step, index) => (
               <div 
                 key={step.title}
-                className={`${isVisible ? 'animate-slide-up' : 'opacity-0'}`}
+                className={`${isVisible ? 'animate-fade-in-left' : 'opacity-0'}`}
                 style={{ animationDelay: step.delay }}
               >
-                {/* Card */}
-                <div className="bg-card rounded-2xl p-8 shadow-lg border border-border/50 hover:shadow-2xl hover:border-primary/30 transition-all duration-500 group h-full">
-                  {/* Step number with icon */}
-                  <div className="relative mb-6">
-                    <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${step.gradient} flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
-                      <span className="text-4xl font-bold text-primary-foreground">{step.letter}</span>
-                    </div>
-                    {/* Small icon badge */}
-                    <div className="absolute -bottom-2 -right-2 left-1/2 transform translate-x-6 w-10 h-10 rounded-full bg-background border-2 border-primary/30 flex items-center justify-center shadow-md">
-                      <step.icon className="w-5 h-5 text-primary" />
-                    </div>
+                <div className="bg-card rounded-xl p-6 shadow-lg border border-border/50 hover:shadow-xl hover:border-primary/30 transition-all duration-300 group flex items-start gap-4">
+                  {/* Step icon */}
+                  <div className={`w-16 h-16 rounded-xl ${step.color} flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300`}>
+                    <span className="text-2xl font-bold text-primary-foreground">{step.letter}</span>
                   </div>
 
-                  {/* Title */}
-                  <h3 className="text-2xl font-bold text-center mb-4 gradient-text">
-                    {step.title}
-                  </h3>
+                  {/* Content */}
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-2">
+                      <h3 className={`text-xl font-bold ${step.textColor}`}>
+                        {step.title}
+                      </h3>
+                      <step.icon className={`w-5 h-5 ${step.textColor}`} />
+                    </div>
+                    <p className="text-muted-foreground">
+                      {step.description}
+                    </p>
+                  </div>
 
-                  {/* Description */}
-                  <p className="text-muted-foreground text-center leading-relaxed">
-                    {step.description}
-                  </p>
-
-                  {/* Arrow to next step (except last) */}
+                  {/* Arrow */}
                   {index < steps.length - 1 && (
-                    <div className="hidden md:flex absolute top-1/2 -right-4 transform -translate-y-1/2 z-20">
-                      <div className="w-8 h-8 rounded-full bg-background border-2 border-primary/30 flex items-center justify-center">
-                        <ArrowRight className="w-4 h-4 text-primary" />
-                      </div>
+                    <div className="hidden lg:block absolute -right-3 top-1/2 transform -translate-y-1/2">
+                      <ArrowRight className="w-6 h-6 text-muted-foreground" />
                     </div>
                   )}
                 </div>
-
-                {/* Mobile arrow */}
-                {index < steps.length - 1 && (
-                  <div className="md:hidden flex justify-center my-4">
-                    <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center rotate-90">
-                      <ArrowRight className="w-4 h-4 text-primary" />
-                    </div>
-                  </div>
-                )}
               </div>
             ))}
-          </div>
-        </div>
 
-        {/* Bottom tagline */}
-        <div 
-          className={`text-center mt-16 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}
-          style={{ animationDelay: '0.8s' }}
-        >
-          <p className="text-xl md:text-2xl font-medium text-muted-foreground">
-            Build. Bridge. <span className="gradient-text font-bold">Become.</span>
-          </p>
+            {/* Tagline */}
+            <div 
+              className={`pt-4 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}
+              style={{ animationDelay: '0.8s' }}
+            >
+              <p className="text-xl font-medium">
+                <span className="text-google-blue">Build</span>. 
+                <span className="text-google-red"> Bridge</span>. 
+                <span className="text-google-green"> Become</span>.
+              </p>
+            </div>
+          </div>
+
+          {/* Image */}
+          <div 
+            className={`relative ${isVisible ? 'animate-fade-in-right' : 'opacity-0'}`}
+            style={{ animationDelay: '0.4s' }}
+          >
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-google-yellow/10 p-6">
+              <img 
+                src={event7} 
+                alt="3B Model in Action" 
+                className="w-full h-auto object-cover rounded-xl"
+              />
+            </div>
+
+            {/* Floating badge */}
+            <div className="absolute -bottom-4 -left-4 bg-card rounded-lg p-3 shadow-xl border border-border/50">
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-google-blue" />
+                <div className="w-3 h-3 rounded-full bg-google-red" />
+                <div className="w-3 h-3 rounded-full bg-google-green" />
+              </div>
+              <p className="text-sm font-medium mt-1">The 3B Framework</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
