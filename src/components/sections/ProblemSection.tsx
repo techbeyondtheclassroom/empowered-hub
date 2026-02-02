@@ -1,105 +1,109 @@
 import { useScrollAnimation, useCountUp } from '@/hooks/useScrollAnimation';
-import { AlertTriangle, TrendingUp, GraduationCap, Briefcase } from 'lucide-react';
+import { AlertTriangle, GraduationCap, Briefcase } from 'lucide-react';
+import event5 from '@/assets/event-5.png';
 
 const ProblemSection = () => {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.2 });
   const percentage = useCountUp(80, 2000, isVisible);
 
   return (
-    <section className="py-20 lg:py-32 gradient-dark text-primary-foreground relative overflow-hidden">
+    <section className="py-20 lg:py-32 bg-muted/30 relative overflow-hidden">
       {/* Background pattern */}
-      <div className="absolute inset-0 opacity-10">
+      <div className="absolute inset-0 opacity-5">
         <div className="absolute top-0 left-0 w-full h-full" style={{
-          backgroundImage: `radial-gradient(circle at 25% 25%, rgba(255,255,255,0.1) 2px, transparent 2px)`,
+          backgroundImage: `radial-gradient(circle at 25% 25%, hsl(var(--primary) / 0.1) 2px, transparent 2px)`,
           backgroundSize: '60px 60px'
         }} />
       </div>
 
-      {/* Floating elements */}
-      <div className="absolute top-20 right-20 opacity-20">
-        <AlertTriangle className="w-24 h-24 text-secondary floating-animation" />
-      </div>
-      <div className="absolute bottom-20 left-20 opacity-10">
-        <GraduationCap className="w-32 h-32 text-accent floating-animation-delayed" />
-      </div>
-
       <div className="container px-4 relative z-10" ref={ref}>
-        <div className="max-w-5xl mx-auto">
-          {/* Header */}
-          <div className={`text-center mb-16 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
-            <span className="inline-block px-4 py-2 rounded-full bg-secondary/20 text-secondary text-sm font-medium mb-6">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Left side - Content */}
+          <div className={`${isVisible ? 'animate-fade-in-left' : 'opacity-0'}`}>
+            {/* Header */}
+            <span className="inline-block px-4 py-2 rounded-full bg-secondary/10 text-secondary text-sm font-medium mb-6">
               The Problem We're Solving
             </span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
               India Doesn't Have a Talent Gap
             </h2>
-            <p className="text-xl text-primary-foreground/80">
+            <p className="text-xl text-muted-foreground mb-8">
               It has a <span className="text-secondary font-semibold">Skills Gap</span>
             </p>
+
+            {/* Main statistic */}
+            <div className="mb-8">
+              <div className="inline-flex items-baseline gap-2">
+                <span className="text-7xl md:text-8xl font-bold text-secondary">
+                  {percentage}
+                </span>
+                <span className="text-5xl md:text-6xl font-bold text-secondary">%</span>
+              </div>
+              <p className="text-xl text-muted-foreground mt-2">
+                of Indian graduates are <span className="text-secondary font-semibold">unemployable</span>
+              </p>
+              <p className="text-sm text-muted-foreground mt-1">
+                — India Skills Report, 2024
+              </p>
+            </div>
+
+            {/* Comparison cards */}
+            <div className="grid sm:grid-cols-2 gap-4">
+              {/* Problem card */}
+              <div className="p-6 rounded-xl bg-card border border-border shadow-sm hover:shadow-lg transition-shadow">
+                <div className="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center mb-4">
+                  <GraduationCap className="w-6 h-6 text-secondary" />
+                </div>
+                <h3 className="text-lg font-bold mb-2">Current Education</h3>
+                <p className="text-sm text-muted-foreground">
+                  Schools focus on rote learning, not real-world problem solving.
+                </p>
+              </div>
+
+              {/* Solution card */}
+              <div className="p-6 rounded-xl bg-card border border-primary/20 shadow-sm hover:shadow-lg transition-shadow">
+                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                  <Briefcase className="w-6 h-6 text-primary" />
+                </div>
+                <h3 className="text-lg font-bold mb-2">What's Needed</h3>
+                <p className="text-sm text-muted-foreground">
+                  Skill-holders with employability skills and critical thinking.
+                </p>
+              </div>
+            </div>
+
+            {/* Bottom quote */}
+            <div className="mt-8 p-4 rounded-lg bg-accent/10 border-l-4 border-accent">
+              <p className="text-lg font-medium">
+                Education produces <span className="text-muted-foreground">degree-holders</span>.
+                <br />
+                The future needs <span className="text-google-blue font-bold">skill-holders</span>.
+              </p>
+            </div>
           </div>
 
-          {/* Main statistic */}
+          {/* Right side - Image */}
           <div 
-            className={`text-center mb-16 ${isVisible ? 'animate-scale-in' : 'opacity-0'}`}
+            className={`relative ${isVisible ? 'animate-fade-in-right' : 'opacity-0'}`}
             style={{ animationDelay: '0.3s' }}
           >
-            <div className="inline-flex items-baseline gap-2">
-              <span className="text-8xl md:text-9xl font-bold text-secondary">
-                {percentage}
-              </span>
-              <span className="text-6xl md:text-7xl font-bold text-secondary">%</span>
-            </div>
-            <p className="text-xl md:text-2xl text-primary-foreground/80 mt-4">
-              of Indian graduates are <span className="text-secondary font-semibold">unemployable</span>
-            </p>
-            <p className="text-sm text-primary-foreground/60 mt-2">
-              — India Skills Report, 2024
-            </p>
-          </div>
-
-          {/* Comparison cards */}
-          <div 
-            className={`grid md:grid-cols-2 gap-8 max-w-4xl mx-auto ${isVisible ? 'animate-slide-up' : 'opacity-0'}`}
-            style={{ animationDelay: '0.5s' }}
-          >
-            {/* Problem card */}
-            <div className="p-8 rounded-2xl bg-primary-foreground/5 border border-primary-foreground/10 backdrop-blur-sm">
-              <div className="w-14 h-14 rounded-xl bg-destructive/20 flex items-center justify-center mb-6">
-                <GraduationCap className="w-7 h-7 text-destructive" />
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-accent/20 p-8">
+              <img 
+                src={event5} 
+                alt="Education Workshop" 
+                className="w-full h-auto object-cover rounded-xl"
+              />
+              
+              {/* Floating stat */}
+              <div className="absolute top-4 right-4 bg-card rounded-lg p-3 shadow-lg">
+                <AlertTriangle className="w-6 h-6 text-secondary mb-1" />
+                <p className="text-xs font-medium">Skills Gap Crisis</p>
               </div>
-              <h3 className="text-xl font-bold mb-3">Current Education</h3>
-              <p className="text-primary-foreground/70">
-                Schools and colleges focus on rote learning, not real-world problem solving. 
-                Young people, especially women, lack access to mentors, exposure, and 
-                opportunities that align with market needs.
-              </p>
             </div>
 
-            {/* Solution card */}
-            <div className="p-8 rounded-2xl bg-secondary/10 border border-secondary/20 backdrop-blur-sm">
-              <div className="w-14 h-14 rounded-xl bg-secondary/20 flex items-center justify-center mb-6">
-                <Briefcase className="w-7 h-7 text-secondary" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">What's Needed</h3>
-              <p className="text-primary-foreground/70">
-                Education that produces skill-holders, not just degree-holders. 
-                Youth need employability skills, critical thinking, and 
-                real-world connections to thrive in the future.
-              </p>
-            </div>
-          </div>
-
-          {/* Bottom quote */}
-          <div 
-            className={`text-center mt-16 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}
-            style={{ animationDelay: '0.7s' }}
-          >
-            <p className="text-2xl md:text-3xl font-medium">
-              Education produces <span className="text-primary-foreground/60">degree-holders</span>.
-            </p>
-            <p className="text-2xl md:text-3xl font-medium mt-2">
-              The future needs <span className="text-secondary font-bold">skill-holders</span>.
-            </p>
+            {/* Decorative elements */}
+            <div className="absolute -top-4 -left-4 w-24 h-24 bg-google-red/20 rounded-full blur-2xl" />
+            <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-google-yellow/20 rounded-full blur-3xl" />
           </div>
         </div>
       </div>

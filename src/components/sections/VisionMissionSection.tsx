@@ -1,6 +1,7 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { Eye, Target, Users, Lightbulb, Globe, Rocket } from 'lucide-react';
+import { Eye, Target, Rocket, Globe } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import event6 from '@/assets/event-6.png';
 
 const VisionMissionSection = () => {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.2 });
@@ -8,8 +9,8 @@ const VisionMissionSection = () => {
   return (
     <section className="py-20 lg:py-32 bg-background relative overflow-hidden">
       {/* Background decorations */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+      <div className="absolute top-0 left-0 w-96 h-96 bg-google-blue/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-google-green/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
 
       <div className="container px-4 relative z-10" ref={ref}>
         {/* Section header */}
@@ -22,110 +23,101 @@ const VisionMissionSection = () => {
           </h2>
         </div>
 
-        {/* Cards grid */}
-        <div className="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {/* Vision Card */}
-          <Card 
-            className={`relative overflow-hidden group hover:shadow-2xl transition-all duration-500 border-2 hover:border-primary/30 ${isVisible ? 'animate-fade-in-left' : 'opacity-0'}`}
-            style={{ animationDelay: '0.2s' }}
-          >
-            {/* Gradient border effect */}
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-secondary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            
-            <CardHeader className="relative z-10 pb-4">
-              <div className="w-16 h-16 rounded-2xl gradient-primary flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                <Eye className="w-8 h-8 text-primary-foreground" />
-              </div>
-              <CardTitle className="text-2xl md:text-3xl">Vision</CardTitle>
-            </CardHeader>
-            
-            <CardContent className="relative z-10 space-y-4">
-              <p className="text-muted-foreground leading-relaxed">
-                We believe in a world where every young person and woman — no matter their 
-                background — has the confidence, skills, and opportunities to create change 
-                that truly matters.
-              </p>
-              <p className="text-muted-foreground leading-relaxed">
-                Our aim is to build a leadership ecosystem that sustains itself, one that 
-                doesn't just celebrate individual success, but grows a community of 
-                changemakers — people who think boldly, act locally, and connect globally.
-              </p>
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
+          {/* Cards */}
+          <div className="space-y-6">
+            {/* Vision Card */}
+            <Card 
+              className={`relative overflow-hidden group hover:shadow-2xl transition-all duration-500 border-2 hover:border-google-blue/30 ${isVisible ? 'animate-fade-in-left' : 'opacity-0'}`}
+              style={{ animationDelay: '0.2s' }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-google-blue/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              
+              <CardHeader className="relative z-10 pb-4">
+                <div className="w-14 h-14 rounded-xl bg-google-blue flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <Eye className="w-7 h-7 text-primary-foreground" />
+                </div>
+                <CardTitle className="text-2xl">Vision</CardTitle>
+              </CardHeader>
+              
+              <CardContent className="relative z-10">
+                <p className="text-muted-foreground leading-relaxed mb-4">
+                  We believe in a world where every young person and woman — no matter their 
+                  background — has the confidence, skills, and opportunities to create change 
+                  that truly matters.
+                </p>
 
-              {/* Vision keywords */}
-              <div className="flex flex-wrap gap-2 pt-4">
-                {['Confidence', 'Skills', 'Opportunities', 'Leadership'].map((keyword) => (
-                  <span 
-                    key={keyword}
-                    className="px-3 py-1 text-sm rounded-full bg-primary/10 text-primary font-medium"
-                  >
-                    {keyword}
-                  </span>
-                ))}
-              </div>
-            </CardContent>
+                <div className="flex flex-wrap gap-2">
+                  {['Confidence', 'Skills', 'Opportunities'].map((keyword) => (
+                    <span 
+                      key={keyword}
+                      className="px-3 py-1 text-sm rounded-full bg-google-blue/10 text-google-blue font-medium"
+                    >
+                      {keyword}
+                    </span>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
 
-            {/* Decorative corner */}
-            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/20 to-transparent rounded-bl-full" />
-          </Card>
+            {/* Mission Card */}
+            <Card 
+              className={`relative overflow-hidden group hover:shadow-2xl transition-all duration-500 border-2 hover:border-google-green/30 ${isVisible ? 'animate-fade-in-left' : 'opacity-0'}`}
+              style={{ animationDelay: '0.4s' }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-google-green/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              
+              <CardHeader className="relative z-10 pb-4">
+                <div className="w-14 h-14 rounded-xl bg-google-green flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <Target className="w-7 h-7 text-primary-foreground" />
+                </div>
+                <CardTitle className="text-2xl">Mission</CardTitle>
+              </CardHeader>
+              
+              <CardContent className="relative z-10 space-y-4">
+                <p className="text-muted-foreground leading-relaxed">
+                  Empower young people and women to turn their ideas into meaningful, lasting change.
+                </p>
 
-          {/* Mission Card */}
-          <Card 
-            className={`relative overflow-hidden group hover:shadow-2xl transition-all duration-500 border-2 hover:border-secondary/30 ${isVisible ? 'animate-fade-in-right' : 'opacity-0'}`}
-            style={{ animationDelay: '0.4s' }}
-          >
-            {/* Gradient border effect */}
-            <div className="absolute inset-0 bg-gradient-to-br from-secondary/10 via-transparent to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            
-            <CardHeader className="relative z-10 pb-4">
-              <div className="w-16 h-16 rounded-2xl bg-secondary flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                <Target className="w-8 h-8 text-secondary-foreground" />
-              </div>
-              <CardTitle className="text-2xl md:text-3xl">Mission</CardTitle>
-            </CardHeader>
-            
-            <CardContent className="relative z-10 space-y-4">
-              <p className="text-muted-foreground leading-relaxed">
-                Our mission is to empower young people and women to turn their ideas into 
-                meaningful, lasting change. We do this in two ways:
-              </p>
-
-              {/* Two pillars */}
-              <div className="space-y-4">
-                <div className="p-4 rounded-xl bg-muted/50 border border-border/50">
-                  <div className="flex items-start gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-secondary/20 flex items-center justify-center shrink-0">
-                      <Rocket className="w-5 h-5 text-secondary" />
-                    </div>
+                <div className="space-y-3">
+                  <div className="p-3 rounded-lg bg-muted/50 border border-border/50 flex items-start gap-3">
+                    <Rocket className="w-5 h-5 text-google-red shrink-0 mt-0.5" />
                     <div>
-                      <h4 className="font-semibold mb-1">On-Ground Impact Projects</h4>
-                      <p className="text-sm text-muted-foreground">
-                        Hands-on projects and upskilling workshops on digital literacy, 
-                        financial literacy, nutritional health and more.
-                      </p>
+                      <h4 className="font-semibold text-sm">On-Ground Impact</h4>
+                      <p className="text-xs text-muted-foreground">Hands-on projects and upskilling workshops</p>
+                    </div>
+                  </div>
+                  <div className="p-3 rounded-lg bg-muted/50 border border-border/50 flex items-start gap-3">
+                    <Globe className="w-5 h-5 text-google-yellow shrink-0 mt-0.5" />
+                    <div>
+                      <h4 className="font-semibold text-sm">Leadership Development</h4>
+                      <p className="text-xs text-muted-foreground">Dialogues, summits, and mentorship</p>
                     </div>
                   </div>
                 </div>
+              </CardContent>
+            </Card>
+          </div>
 
-                <div className="p-4 rounded-xl bg-muted/50 border border-border/50">
-                  <div className="flex items-start gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-secondary/20 flex items-center justify-center shrink-0">
-                      <Globe className="w-5 h-5 text-secondary" />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold mb-1">Leadership Development</h4>
-                      <p className="text-sm text-muted-foreground">
-                        Youth-led community through dialogues, summits, mentorship, 
-                        connecting them with leaders and policymakers.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-
-            {/* Decorative corner */}
-            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-secondary/20 to-transparent rounded-bl-full" />
-          </Card>
+          {/* Image side */}
+          <div 
+            className={`relative ${isVisible ? 'animate-fade-in-right' : 'opacity-0'}`}
+            style={{ animationDelay: '0.3s' }}
+          >
+            <div className="rounded-2xl overflow-hidden shadow-2xl">
+              <img 
+                src={event6} 
+                alt="Vision and Mission" 
+                className="w-full h-auto object-cover aspect-[4/5]"
+              />
+            </div>
+            
+            {/* Decorative card */}
+            <div className="absolute -bottom-6 -right-6 bg-card rounded-xl p-4 shadow-xl border border-border/50">
+              <p className="text-sm font-medium text-muted-foreground">Building a</p>
+              <p className="text-lg font-bold gradient-text">Leadership Ecosystem</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>

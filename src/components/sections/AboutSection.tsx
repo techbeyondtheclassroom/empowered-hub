@@ -1,19 +1,19 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { Badge } from '@/components/ui/badge';
 import { Quote, Target, Users, Globe } from 'lucide-react';
-import event1 from '@/assets/event-1.png';
+import aboutHero from '@/assets/about-hero.jpg';
 
 const AboutSection = () => {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.2 });
 
   const sdgBadges = [
-    { number: 4, title: 'Quality Education', color: 'bg-red-500' },
-    { number: 5, title: 'Gender Equality', color: 'bg-orange-500' },
-    { number: 10, title: 'Reduced Inequalities', color: 'bg-pink-500' },
+    { number: 4, title: 'Quality Education', color: 'bg-google-blue' },
+    { number: 5, title: 'Gender Equality', color: 'bg-google-red' },
+    { number: 10, title: 'Reduced Inequalities', color: 'bg-google-green' },
   ];
 
   return (
-    <section id="about" className="py-20 lg:py-32 bg-muted/30">
+    <section id="about" className="py-20 lg:py-32 bg-background">
       <div className="container px-4" ref={ref}>
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Text content */}
@@ -65,15 +65,15 @@ const AboutSection = () => {
             {/* Key points */}
             <div className="grid grid-cols-3 gap-4 pt-6">
               {[
-                { icon: Target, label: 'Mission-Driven' },
-                { icon: Users, label: 'Youth-Focused' },
-                { icon: Globe, label: 'Pan-India Reach' },
+                { icon: Target, label: 'Mission-Driven', color: 'text-google-blue' },
+                { icon: Users, label: 'Youth-Focused', color: 'text-google-red' },
+                { icon: Globe, label: 'Pan-India Reach', color: 'text-google-green' },
               ].map((item, index) => (
                 <div 
                   key={index}
-                  className="flex flex-col items-center text-center p-3 rounded-lg bg-background border border-border/50 hover:border-primary/30 transition-colors"
+                  className="flex flex-col items-center text-center p-3 rounded-lg bg-muted border border-border/50 hover:border-primary/30 transition-colors"
                 >
-                  <item.icon className="w-6 h-6 text-primary mb-2" />
+                  <item.icon className={`w-6 h-6 ${item.color} mb-2`} />
                   <span className="text-sm font-medium">{item.label}</span>
                 </div>
               ))}
@@ -87,18 +87,18 @@ const AboutSection = () => {
           >
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <img 
-                src={event1} 
-                alt="Beyond the Classroom Event" 
-                className="w-full h-auto object-cover"
+                src={aboutHero} 
+                alt="Beyond the Classroom Workshop Session" 
+                className="w-full h-auto object-cover aspect-[4/5]"
               />
               {/* Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />
             </div>
             
             {/* Floating badge */}
-            <div className="absolute -bottom-6 -left-6 bg-background rounded-xl p-4 shadow-xl border border-border/50">
+            <div className="absolute -bottom-6 -left-6 bg-card rounded-xl p-4 shadow-xl border border-border/50">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 gradient-primary rounded-full flex items-center justify-center">
+                <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
                   <Users className="w-6 h-6 text-primary-foreground" />
                 </div>
                 <div>
@@ -109,8 +109,8 @@ const AboutSection = () => {
             </div>
 
             {/* Decorative elements */}
-            <div className="absolute -top-4 -right-4 w-24 h-24 bg-secondary/20 rounded-full blur-2xl" />
-            <div className="absolute -bottom-8 right-1/4 w-32 h-32 bg-primary/10 rounded-full blur-3xl" />
+            <div className="absolute -top-4 -right-4 w-24 h-24 bg-google-yellow/20 rounded-full blur-2xl" />
+            <div className="absolute -bottom-8 right-1/4 w-32 h-32 bg-google-blue/10 rounded-full blur-3xl" />
           </div>
         </div>
       </div>
